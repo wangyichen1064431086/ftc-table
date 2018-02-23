@@ -1,0 +1,28 @@
+{
+  "description": "Responsive FTChinese table",
+  "origamiCategory": "components",
+  "origamiVersion": 1,
+  "support": "https://github.com/FTChinese/ftc-table/issues",
+  "supportStatus": "active",
+  "browserFeatures": {
+      "required": [
+          "customevent"
+      ]
+  },
+  "demosDefaults": {
+    "sass": "demos/src/main.scss",
+    "js": "demos/src/main.js",
+    "documentClasses": "core"
+  },
+  "demos": [
+    {
+      "name": "basicTable",
+      "title": "basicTable",
+      "data": "demos/data/basicTable.json",
+      "template": "basicTable.html",
+      "description": "",
+      "js":"main.js",
+      "css":"main.css"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+/**
+ * @dest Generate all styles
+ * @param $className  The base name string for class style
+*/ 
+
+@mixin ftcTableAll($classname:ftc-table) {
+  .#{$classname} {
+    @include ftcTableBase;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "ftc-table",
+  "description": "The The table component being used by FTC. Edit",
+  "main": [
+    "main.scss",
+    "main.js"
+  ],
+  "authors": [
+    "wangyichen"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ftc-table",
+    "table",
+    "FTChinese"
+  ],
+  "homepage": "https://github.com/wangyichen1064431086/ftc-table",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "o-grid": "4.2.0",
+    "ftc-logos": "^1.2.2"
+  }
+}

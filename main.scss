@@ -1,0 +1,13 @@
+$ftc-table-is-silent: false !default;
+
+@import "o-grid/main";
+
+@import "src/scss/allclass-generate";
+
+@import "src/scss/base";
+@if ($ftc-table-is-silent == false) {
+  @include ftcTableAll;
+
+  	// Set table to silent again to avoid being output twice
+  $ftc-table-is-silent:true !global;
+} //静音模式就是只提供了混合器但页面引用该模块后并没有实际使用这些混合器，需要手动导入混合器才行，

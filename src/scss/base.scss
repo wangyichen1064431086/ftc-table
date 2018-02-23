@@ -1,0 +1,23 @@
+@mixin ftcTableBase {
+  background:#fff1e5;
+  color:#33302e;
+  border-collapse: collapse;
+  margin: 0 0 20px;
+  width: 100%;
+
+  caption {
+    margin:0;
+    padding:0;
+    width:100%;
+  }
+  th,td {
+    padding:8px;
+    text-align: left;
+    vertical-align: top;
+    font-size:18px;
+  }
+  th {
+    font-weight: bold;
+  }
+ 
+}
