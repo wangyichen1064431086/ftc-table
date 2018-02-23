@@ -6,5 +6,11 @@
 @mixin ftcTableAll($classname:ftc-table) {
   .#{$classname} {
     @include ftcTableBase;
+    .#{$classname}__cell--numeric {
+      @include ftcTableCellNumberic;
+    }
+    .#{$classname}__cell--content-secondary {
+      @include ftcTableCellContentSecondary;
+    }
   }
 }

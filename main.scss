@@ -5,6 +5,7 @@ $ftc-table-is-silent: false !default;
 @import "src/scss/allclass-generate";
 
 @import "src/scss/base";
+@import "src/scss/cells";
 @if ($ftc-table-is-silent == false) {
   @include ftcTableAll;
 
