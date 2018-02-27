@@ -1,0 +1,24 @@
+/// Base styles for caption element - add this to any <caption> you use
+
+@mixin ftcTableCaption {
+  font-family: MetricWeb,sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 600;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #b3a9a0;
+  border-top: 2px solid #b3a9a0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@mixin ftcTableCaptionTop {
+  caption-side: top; //CSS 中 caption-side 属性会将表格的标题<caption> 放到规定的位置。但是具体显示的位置与表格的 writing-mode 属性值有关。
+  margin-bottom: -2px;
+}
+
+@mixin ftcTableCaptionBottom {
+  caption-side: bottom;
+  margin-bottom: 0;
+}

@@ -1,0 +1,14 @@
+/// Add horizontal lines to a table
+@mixin ftcTableHorizontalLines {
+  tr:not(:last-child) {//tr中的非最后一个元素
+    border-bottom: 1px solid #ccc1b7;
+  }
+}
+
+/// Add verticle lines to a table
+@mixin ftcTableVerticalLines {
+  th:not(:last-child):not(:first-child), td:not(:last-child):not(:first-child) {
+    border-left: 1px solid #ccc1b7;
+    border-right: 1px solid #ccc1b7;
+  }
+}

@@ -1,0 +1,53 @@
+@mixin ftcTableResponsiveScroll {
+  display:flex;
+  overflow: hidden;
+
+  @include oGridRespondTo(S) {// S以上display为正常的table,S以下为flex
+    display: table;
+  }
+
+  @include oGridRespondTo($until: S) {
+    .ftc-table__cell--numeric {
+      text-align: left;
+    }
+  }
+
+  thead {
+    display: flex;
+    flex-shrink: 0;//flex-shrink为弹性盒项目属性，设置在项目上。该项目flex-shrink为0，若其他项目都为1，则当空间不足时，该flex-shrink为0的项目不缩小。
+
+    @include oGridRespondTo(S) {//S以上display为正常的table-header-group
+      display: table-header-group;
+    }
+  }
+
+  tbody {
+    display: flex;
+    overflow-x:auto;//取决于浏览器本身。当内容发生溢出时，桌面浏览器如Firefox会显示滚动条。
+    overflow-y:hidden;
+    position:relative;
+
+    @include oGridRespondTo(S) {
+      display: table-row-group;
+    }
+  }
+
+  tr {
+    display: flex;
+    flex-direction: column;//容器属性，设置在容器上，决定项目排列的方向。column表明主轴为垂直方向，起点在上沿。
+    //这里意思就是所有的表格行，在小于S的情况下变成了垂直方向
+    flex-shrink:0;
+
+    @include oGridRespondTo(S) {//S以上为正常的table-row
+      display: table-row;
+    }
+  }
+
+  th,td {
+    display: block;
+
+    @include oGridRespondTo(S) {//S以上为正常的table-cell
+      display: table-cell;
+    }
+  }
+}

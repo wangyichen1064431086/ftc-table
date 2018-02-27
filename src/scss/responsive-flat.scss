@@ -1,0 +1,63 @@
+/// Make a table 'ResponsiveFlat'
+@mixin ftcTableResponsiveFlat {
+  float: left;//表明元素浮动在其所在的块容器左侧
+  width:100%;
+  *, *:before, *:after {
+    box-sizing: border-box;
+  } 
+  /*
+  @include oGridRespondTo(S) {
+    display: table;
+  }
+  */// 不需要指明display:table, table元素的display永远默认是table
+
+  @include oGridRespondTo($until: S) {
+    .ftc-table__cell--numeric {
+      text-align: left;//在cells里面指明了该.ftc-table__cell-numeric应该是text-align:right,这里是对S的情况进行特殊处理
+    }
+  }
+
+  td {
+    @include oGridRespondTo(S) {//在宽度大于S时：
+      border-right:1px solid #ccc1b7;
+      //display:table-cell;//此处不需要指明display:table-cell,td元素display永远默认是table-cell
+    }
+   // width:50%;//td设置50%的意义在何？
+  }
+
+  thead th{
+    display: none; //当宽度小于S时，不显示thead下的th
+
+    @include oGridRespondTo(S) {
+      border-right: 1px solid #ccc1b7;
+      display:table-cell;
+    }
+  }
+
+  tr {
+    //当宽度小于S,它display为弹性盒；当宽度大于S，它display恢复为正常的table-row
+    display: flex;
+    flex-flow: row wrap; 
+      //flex-flow属性是flex-direction和flex-wrap的简写
+      //flex-direction 属性指定了内部元素是如何在 flex 容器中布局的。row表明是从左到右的水平轴
+      //flex-wrap 属性指定 flex 元素单行显示还是多行显示 。如果允许换行，这个属性允许你控制行的堆叠方向。wrap表明flex元素允许换行，第一行在上方。
+      ///更多关于弹性盒语法:(http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+    width:100%;
+
+    @include oGridRespondTo (S) {
+      display: table-row;
+    }
+
+  }
+
+  tbody tr th {
+    // tbody下tr的th在S以上就不显示
+    border-right: 1px solid #ccc1b7;
+    float:left;
+    width:50%;
+
+    @include oGridRespondTo(S) {
+      display: none;
+    }
+  }
+}

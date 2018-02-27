@@ -23,6 +23,42 @@
       "description": "",
       "js":"main.js",
       "css":"main.css"
+    },
+    {
+      "name": "captionsTable",
+      "title": "captionsTable",
+      "data": "demos/data/captionsTable.json",
+      "template": "captionsTable.html",
+      "description": "",
+      "js":"main.js",
+      "css":"main.css"
+    },
+    {
+      "name": "responsiveFlatTable",
+      "title": "responsiveFlatTable",
+      "data": "demos/data/responsiveFlatTable.json",
+      "template": "responsiveFlatTable.html",
+      "description": "",
+      "js":"main.js",
+      "css":"main.css"
+    },
+    {
+      "name": "responsiveOverflowTable",
+      "title": "responsiveOverflowTable",
+      "data": "demos/data/responsiveOverflowTable.json",
+      "template": "responsiveOverflowTable.html",
+      "description": "",
+      "js":"main.js",
+      "css":"main.css"
+    },
+    {
+      "name": "responsiveScrollTable",
+      "title": "responsiveScrollTable",
+      "data": "demos/data/responsiveScrollTable.json",
+      "template": "responsiveScrollTable.html",
+      "description": "",
+      "js":"main.js",
+      "css":"main.css"
     }
   ]
 }

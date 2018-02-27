@@ -6,11 +6,50 @@
 @mixin ftcTableAll($classname:ftc-table) {
   .#{$classname} {
     @include ftcTableBase;
+
     .#{$classname}__cell--numeric {
       @include ftcTableCellNumberic;
     }
     .#{$classname}__cell--content-secondary {
       @include ftcTableCellContentSecondary;
     }
+
+    .#{$classname}__caption--top,.#{$classname}__caption--bottom {
+      @include ftcTableCaption;
+    }
+    .#{$classname}__caption--top {
+      @include ftcTableCaptionTop;
+    }
+    .#{$classname}__caption--bottom {
+      @include ftcTableCaptionBottom;
+    }
+
+    
   }
+
+  .#{$classname}--responsive-flat {
+    @include ftcTableResponsiveFlat;
+  }
+
+  .#{$classname}--responsive-overflow {
+    @include ftcTableResponsiveOverflow;
+  }
+
+  .#{$classname}--responsive-scroll {
+    @include ftcTableResponsiveScroll;
+  }
+
+  .#{$classname}--row-stripes {
+    @include ftcTableRowStripes;
+  }
+
+  .#{$classname}--horizontal-lines {
+    @include ftcTableHorizontalLines;
+  }
+
+  .#{$classname}--vertical-lines {
+    @include ftcTableVerticalLines;
+  }
+
+
 }

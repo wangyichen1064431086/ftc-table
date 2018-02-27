@@ -1,0 +1,12 @@
+/// Add row stripes to table
+@mixin ftcTableRowStripes {
+  background-color:#fff1e5;
+
+  caption {
+    background-color:#fff1e5;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color:#f2dfce;
+  }
+}

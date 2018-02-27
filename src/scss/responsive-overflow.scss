@@ -1,0 +1,5 @@
+@mixin ftcTableResponsiveOverflow {
+  margin:0;//普通ftc-table是margin: 0 0 20px;这个是因为width直接可能超出范围，所以左右也为0吧
+  min-width: 500px;
+  width: 100%;
+}

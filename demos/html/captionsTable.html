@@ -1,32 +1,19 @@
 {% extends "base.html" %}
 
 {% block table %}
-<table class="ftc-table ftc-table--vertical-lines" data-ftc-component="ftc-table">
+<table class="ftc-table" data-ftc-component="ftc-table">
+  <caption class="ftc-table__caption--top">
+    Top caption (default)
+  </caption>
   <thead>
     <tr>
-      <th>
-        {{table.th1}}
-        <span class="ftc-table__cell--content-secondary">
-          Type of cheese
-        </span>
+      <th>{{table.th1}}</th>
+      <th>Bread</th>
+      <th data-ftc-table-data-type="numeric" class="ftc-table__cell-numeric">
+        Cost1
       </th>
-      <th>
-        Bread
-        <span class="ftc-table__cell--content-secondary">
-          Type of bread
-        </span>
-      </th>
-      <th data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-        Cost
-        <span class="ftc-table__cell--content-secondary">
-          (GBP)
-        </span>
-      </th>
-      <th data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-        Cost
-        <span class="ftc-table__cell--content-secondary">
-          (EUR)
-        </span>
+      <th data-ftc-table-data-type="numeric" class="ftc-table__cell-numeric">
+        Cost2
       </th>
     </tr>
   </thead>
@@ -45,6 +32,7 @@
         1.56
       </td>
     </tr>
+
     <tr>
       <td>
         stilton
@@ -59,6 +47,7 @@
         1.85
       </td>
     </tr>
+
     <tr>
       <td>
         red leicester
@@ -72,6 +61,7 @@
       <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
       </td>
     </tr>
+
     <tr>
       <td>
         gruyere
@@ -86,5 +76,8 @@
       </td>
     </tr>
   </tbody>
+  <caption class="ftc-table__caption--bottom">
+    Bottom caption
+  </caption>
 </table>
 {% endblock %}
