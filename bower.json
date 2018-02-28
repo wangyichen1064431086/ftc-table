@@ -23,7 +23,6 @@
     "tests"
   ],
   "dependencies": {
-    "o-grid": "4.2.0",
-    "ftc-logos": "^1.2.2"
+    "o-grid": "4.2.0"
   }
 }
