@@ -19,5 +19,38 @@
   th {
     font-weight: bold;
   }
+
+  &[data-ftc-table--js] thead th:not([data-ftc-table--disablesort]) {
+    cursor:pointer;
+    user-select: none;
+    padding-right: 20px;
+    &[aria-sort='none']::after {
+      background-image: url(https://www.ft.com/__origami/service/image/v2/images/raw/fticon-v1:arrows-up-down?source=o-icons&format=svg);
+      @include sortSymbolStyle;
+    }
+    &[aria-sort='ascending']::after, &[aria-sort='none']:hover::after {
+      background-image: url(https://www.ft.com/__origami/service/image/v2/images/raw/fticon-v1:arrow-up?source=o-icons&format=svg);
+      @include sortSymbolStyle;
+    }
+    &[aria-sort='descending']::after {
+      background-image: url(https://www.ft.com/__origami/service/image/v2/images/raw/fticon-v1:arrow-down?source=o-icons&format=svg);
+      @include sortSymbolStyle;
+    }
+    
+  }
  
+  
+}
+
+@mixin sortSymbolStyle {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50%;
+  background-color: transparent;
+  content: '';
+  margin-right: -20px;
+  vertical-align: top;
 }
