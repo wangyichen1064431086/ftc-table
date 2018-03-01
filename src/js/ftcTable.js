@@ -14,12 +14,49 @@ class Table {
 
     this.tableEl = tableEl;
 
+    this.thsOfHeader = Array.from(this.tableEl.querySelectorAll('thead th'));
+
+    this.sortByColumn = this.sortByColumn.bind(this);
+    this.sortRowsByColumn = this.sortRowsByColumn.bind(this);
+
+    this.thsOfHeader.forEach((th, columnIndex) => {
+      if (th.hasAttribuite('data-ftc-table--disablesort')) {
+        return false;
+      }
+
+      th.addEventListener('click', this.sortByColumn);
+    })
     // Write code here
 
     this.headerEl.removeAttribute('data-ftc-table--no-js');
 		this.headerEl.setAttribute('data-ftc-table--js', '');
   }
 
+  sortByColumn(e, columnIndex) {
+    const currentSort = e.target.getAttribute('aria-sort');
+    this.thsOfHeader.forEach((th) => {
+      th.setAttribute('aria-sort','none');//既然要根据某一列重新排序，那么所有th自然都要重置aria-sort为none，因为按照某一列排序，那么其他列自然就是乱序的。
+    });
+
+    let tableOrder;
+    let ariaSort;
+    if (!this.tableEl.getAttribute('data-ftc-table--order') || currentSort === 'none' || currentSort === 'descending') { //如果当前table的属性data-ftc-table--order无值，且当前列的aria-sort为none或descending,那么就变为升序排列
+      tableOrder = 'ASC';
+      ariaSort = 'ascending';
+    } else {
+      tableOrder = 'DSC';
+      ariaSort = 'descending';
+    }
+    this.tableEl.setAttribute('data-ftc-table--order', tableOrder);
+    e.target.setAttribute('aria-sort',ariaSort);
+    const currentType = e.target.getAttribute('data-ftc-table--datatype');
+    this.sortRowsByColumn(columIndex, tableOrder,currentType);
+  }
+
+
+  sortRowsByColumn(columIndex, tableOrder,currentType) {
+    // TODO
+  }
   static init (rootEl) {
     if (!rootEl) {
       rootEl = document.body;
