@@ -77,9 +77,7 @@ gulp.task('html', async () => {
 
     })
   }
-  
- 
-   
+
   return Promise.all(demos.map((demo) => {
     return renderOneView(demo);
   })).then(() => {
@@ -117,7 +115,40 @@ gulp.task('styles', function styles() {
     .pipe(browserSync.stream({once: true}));
 });
 
-gulp.task('serve', gulp.series('html','styles', () => {
+gulp.task('scripts', async () => {
+  // TODO:关于rollup需要再认真学习一下
+  const origami = await fs.readAsync('origami.json','json');
+  const demos = origami.demos;
+  async function rollupOneJs(demo) {
+    const bundle = await rollup({
+      input:`demos/src/${demo.js}`,
+      plugins:[
+        babel({//这里需要配置文件.babelrc
+          exclude:'node_modules/**'
+        }),
+        nodeResolve({
+          jsnext:true,
+        })
+      // rollupUglify({}, minifyEs6)//压缩es6代码
+      ]
+    });
+
+    await bundle.write({//返回promise，以便下一步then()
+        file: `.tmp/scripts/${demo.js}`,
+        format: 'iife',
+        sourcemap: true
+    });
+  }
+  //console.log(demos);
+  await demos.forEach(rollupOneJs);
+  browserSync.reload();
+});
+
+gulp.task('clean', function() {
+  return del(['.tmp/**']);
+});
+
+gulp.task('serve', gulp.series('clean','html','styles','scripts',() => {
   browserSync.init({
     server:{
       baseDir: ['.tmp'],
@@ -127,4 +158,5 @@ gulp.task('serve', gulp.series('html','styles', () => {
   });
   gulp.watch(['demos/html/*.html','demos/data/*.json'], gulp.parallel('html'));
   gulp.watch(['src/scss/*.scss', 'demos/src/main.scss'], gulp.parallel('styles'));
-}))
+  gulp.watch(['src/js/*.js','demos/src/main.js'],gulp.parallel('scripts'));
+}));
