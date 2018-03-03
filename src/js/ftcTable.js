@@ -19,14 +19,53 @@ class Table {
     this.ascendingSort = this.ascendingSort.bind(this);
     this.descendingSort = this.descendingSort.bind(this);
 
+    this.duplicateHeader = this.duplicateHeader.bind(this);
+    /*
+    document.body.addEventListener('keydown',(e) => {
+      alert('keydown');
+    });
+    */
+    //this.keydownSortByColumn = this.keydownSortByColumn.bind(this);
+
+    //功能1：为thead的th绑定排序事件
     this.thsOfHeader.forEach((th, columnIndex) => {
       if (th.hasAttribute('data-ftc-table--disablesort')) {
         return false;
       }
-
+      th.setAttribute('tabindex', "0");
       th.addEventListener('click', this.sortByColumn.bind(this,columnIndex));//TODO:优化为事件委托
-    })
+    
+      th.addEventListener('keydown',(e) => {//按下空格或回车键也能实现排序变换. NOTE:必须设置了tabindex值为0，否则tabindex默认值为-1,即元素不能通过键盘导航来访问。
+        console.log('keydown');
+        if ('key' in e) {
+          console.log('yes');
+          /** NOTE:
+           * KeyboardEvent.key: 返回用户按下的键盘物理按键的按键名。如按下Enter返回'Enter'
+           * KeyboardEvent.keyCode:返回用户按下的键盘物理按键的按键值。如按下Enter返回13。已废弃，用'key'取代。
+           * KeyboardEvent.which:和keyCode一样。
+           * 关于keyboardEvent的几个属性待整理
+          */
+          if (e.key === 'Enter' || e.key === ' ') {
+            this.sortByColumn(columnIndex, e);
+          }
+
+        }
+      });
+    });
     // Write code here
+
+    //功能2：
+    //只有thsOfHeader存在的时候，才能应用ftc-table--responsive-flat的样式
+    if (this.tableEl.getAttribute('data-ftc-table--responsive') === 'flat' && this.thsOfHeader.length > 0) {
+      this.isResponsive = true;
+    } else {
+      this.tableEl.classList.remove('ftc-table--responsive-flat')
+    }
+
+    if (this.isResponsive) {
+      this.duplicateHeader(this.thsOfHeader);
+    }
+
 
     this.tableEl.removeAttribute('data-ftc-table--no-js');
 		this.tableEl.setAttribute('data-ftc-table--js', '');
@@ -59,8 +98,8 @@ class Table {
     // TODO
     const tbody = this.tableEl.querySelector('tbody');
     const rows = Array.from(tbody.querySelectorAll('tr'));
-    console.log(rows);
-    console.log(isNumeric);
+    //console.log(rows);
+    //console.log(isNumeric);
     rows.sort((a, b) => {
       let aTd = a.children[columnIndex];
       let bTd = b.children[columnIndex];
@@ -87,17 +126,21 @@ class Table {
 
   ascendingSort(a,b) {
     if ((a < b) || a !== a) { //说明a是NaN;  不能用isNaN判断，因为isNaN会尝试先把里面的字符串转换为number，那么isNaN('cheddar')就为true了
+    /*
       console.log(`a<b:${a<b}`);
       console.log(`isNaN(a):${isNaN(a)}`);
       console.log(`${a}<${b}`);
+    */
       return -1;
     } else if ((a > b) || b !== b) {
+      /*
       console.log(`a>b:${a>b}`);
       console.log(`isNaN(b):${isNaN(b)}`);
       console.log(`${a}>${b}`);
+      */
       return 1;
     } else {
-      console.log(`${a}=${b}`);
+      //console.log(`${a}=${b}`);
       return 0;
     }
   }
@@ -106,6 +149,33 @@ class Table {
     return 0 - this.ascendingSort(a,b)
   }
 
+  duplicateHeader() {
+    const rowsAll = Array.from(this.tableEl.getElementsByTagName('tr'));
+    rowsAll.forEach((row) => {
+      const tds = Array.from(row.getElementsByTagName('td'));
+      tds.forEach((td, index) => {
+        row.insertBefore(this.thsOfHeader[index].cloneNode(true),td);//在每个td前面都插上其上方对应的th
+      })
+    })
+  }
+  /*
+  keydownSortByColumn(columnIndex, e) {
+    console.log('keydown');
+    if ('key' in e) {
+      console.log('yes');
+      /** NOTE:
+       * KeyboardEvent.key: 返回用户按下的键盘物理按键的按键名。如按下Enter返回'Enter'
+       * KeyboardEvent.keyCode:返回用户按下的键盘物理按键的按键值。如按下Enter返回13。已废弃，用'key'取代。
+       * KeyboardEvent.which:和keyCode一样。
+       * 关于keyboardEvent的几个属性待整理
+      
+      if (e.key === 'Enter' || e.key === ' ') {
+        this.sortByColumn(columnIndex, e);
+      }
+
+    }
+  }
+  */
   /* o-table写法：
   function descendingSort(...args) { //新用法待研究理解
     return 0 - ascendingSort.apply(this, args);
