@@ -20,6 +20,9 @@ class Table {
     this.descendingSort = this.descendingSort.bind(this);
 
     this.duplicateHeader = this.duplicateHeader.bind(this);
+    
+    this.wrap = this.wrap.bind(this);
+
     /*
     document.body.addEventListener('keydown',(e) => {
       alert('keydown');
@@ -66,11 +69,17 @@ class Table {
       this.duplicateHeader(this.thsOfHeader);
     }
 
+    //功能3：添加被嵌入的外框，进而添加诸如固定表头之类的功能
+    if (this.tableEl.hasAttribute('data-ftc-table--wrapped')) {
+      this.wrap();
+    }
+    
 
     this.tableEl.removeAttribute('data-ftc-table--no-js');
 		this.tableEl.setAttribute('data-ftc-table--js', '');
   }
 
+  //按某一列升降序排列：
   sortByColumn(columnIndex, e) {
     const currentSort = e.currentTarget.getAttribute('aria-sort');
     this.thsOfHeader.forEach((th) => {
@@ -149,6 +158,7 @@ class Table {
     return 0 - this.ascendingSort(a,b)
   }
 
+  //拷贝表头内容至每一行，是的tbody部分变为<tr><th></th><td></td><td></td>..</tr>,然后css弹性盒控制在页面很窄的情况下这样显示处来
   duplicateHeader() {
     const rowsAll = Array.from(this.tableEl.getElementsByTagName('tr'));
     rowsAll.forEach((row) => {
@@ -158,24 +168,41 @@ class Table {
       })
     })
   }
-  /*
-  keydownSortByColumn(columnIndex, e) {
-    console.log('keydown');
-    if ('key' in e) {
-      console.log('yes');
-      /** NOTE:
-       * KeyboardEvent.key: 返回用户按下的键盘物理按键的按键名。如按下Enter返回'Enter'
-       * KeyboardEvent.keyCode:返回用户按下的键盘物理按键的按键值。如按下Enter返回13。已废弃，用'key'取代。
-       * KeyboardEvent.which:和keyCode一样。
-       * 关于keyboardEvent的几个属性待整理
-      
-      if (e.key === 'Enter' || e.key === ' ') {
-        this.sortByColumn(columnIndex, e);
-      }
-
+  
+  wrap() {
+    console.log('wrap');
+    console.log(!this.tableEl.hasAttribute('data-ftc-table--wrapped'));
+    console.log(!this.tableEl.parentNode.matches('.ftc-table__wrapper'));
+    if (!this.tableEl.hasAttribute('data-ftc-table--wrapped') || this.tableEl.parentNode.matches('.ftc-table__wrapper')) {
+      console.log('return wrap');
+      //NOTE:
+        //Element.matches(selectorString)方法: 如果元素被指定的选择器字符串selectorString选择，返回true; 否则返回false。
+      return;
     }
+
+    const wrapperEl = document.createElement('div');
+   
+
+    this.tableEl.parentNode.insertBefore(wrapperEl, this.tableEl);
+    wrapperEl.appendChild(this.tableEl);//原DOM中的会去掉再添加到这里
+
+    wrapperEl.classList.add('ftc-table__wrapper');
+
+    let wrapperWidth = this.tableEl.getAttribute('data-ftc-table--wrapper-width');
+    let wrapperHeight = this.tableEl.getAttribute('data-ftc-table--wrapper-height');
+    if (Number(wrapperWidth)) {
+      wrapperWidth += 'px';
+    } 
+    if (Number(wrapperHeight)) {
+      wrapperHeight += 'px';
+    }
+    wrapperEl.style.width = wrapperWidth;
+    wrapperEl.style.height = wrapperHeight;
+
+      
+    
+
   }
-  */
   /* o-table写法：
   function descendingSort(...args) { //新用法待研究理解
     return 0 - ascendingSort.apply(this, args);

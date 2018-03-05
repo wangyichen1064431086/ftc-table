@@ -4,6 +4,9 @@
 */ 
 
 @mixin ftcTableAll($classname:ftc-table) {
+  .#{$classname}__wrapper {
+    @include ftcTableWrapper;
+  }
   .#{$classname} {
     @include ftcTableBase;
 
