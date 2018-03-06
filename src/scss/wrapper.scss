@@ -1,3 +1,7 @@
 @mixin ftcTableWrapper {
   overflow: scroll;
+  .fixedhead {
+    position:fixed;
+    z-index: 100;
+  }
 }

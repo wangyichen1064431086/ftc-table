@@ -199,7 +199,18 @@ class Table {
     wrapperEl.style.width = wrapperWidth;
     wrapperEl.style.height = wrapperHeight;
 
-      
+    const tHeadEl = this.tableEl.querySelector('thead');
+    
+    wrapperEl.addEventListener('scroll', () => {
+      console.log('scroll');
+      console.log(wrapperEl.scrollTop);
+      if(wrapperEl.scrollTop>0) {
+        tHeadEl.classList.add('fixedhead');
+      } else {
+        tHeadEl.classList.remove('fixedhead');
+      }
+    })
+    
     
 
   }
