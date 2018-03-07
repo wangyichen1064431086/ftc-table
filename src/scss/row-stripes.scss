@@ -1,12 +1,15 @@
 /// Add row stripes to table
 @mixin ftcTableRowStripes {
-  background-color:#fff1e5;
+  background:#fff1e5;
+  thead th {
+    background:#fff1e5; //防止scroll的时候会透出滚上来的tbody内容
+  }
 
   caption {
-    background-color:#fff1e5;
+    background:#fff1e5;
   }
 
   tbody tr:nth-child(even) {
-    background-color:#f2dfce;
+    background:#f2dfce;
   }
 }

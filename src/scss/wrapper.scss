@@ -1,7 +1,9 @@
 @mixin ftcTableWrapper {
   overflow: scroll;
+  /* NOTE:使用这种方法固定表头需要提前设置单元格大小，否则一滚动表头大小会改变。改用js动态设置transform实现
   .fixedhead {
     position:fixed;
     z-index: 100;
   }
+  */
 }

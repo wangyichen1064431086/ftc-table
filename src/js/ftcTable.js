@@ -1,3 +1,5 @@
+import { sumOfAll, meanOfAll, medianOfAll} from './statisticFunc.js';
+
 class Table {
   constructor(tableEl) {
     if (!tableEl) {
@@ -23,6 +25,7 @@ class Table {
     
     this.wrap = this.wrap.bind(this);
 
+    this.addStatistic = this.addStatistic.bind(this);
     /*
     document.body.addEventListener('keydown',(e) => {
       alert('keydown');
@@ -60,18 +63,20 @@ class Table {
     //功能2：
     //只有thsOfHeader存在的时候，才能应用ftc-table--responsive-flat的样式
     if (this.tableEl.getAttribute('data-ftc-table--responsive') === 'flat' && this.thsOfHeader.length > 0) {
-      this.isResponsive = true;
+      this.duplicateHeader(this.thsOfHeader);
     } else {
       this.tableEl.classList.remove('ftc-table--responsive-flat')
     }
 
-    if (this.isResponsive) {
-      this.duplicateHeader(this.thsOfHeader);
-    }
 
     //功能3：添加被嵌入的外框，进而添加诸如固定表头之类的功能
     if (this.tableEl.hasAttribute('data-ftc-table--wrapped')) {
       this.wrap();
+    }
+    
+    //功能4：添加统计信息作为tfoot
+    if (this.tableEl.hasAttribute('data-ftc-table--statistic')) {
+      this.addStatistic();
     }
     
 
@@ -107,8 +112,7 @@ class Table {
     // TODO
     const tbody = this.tableEl.querySelector('tbody');
     const rows = Array.from(tbody.querySelectorAll('tr'));
-    //console.log(rows);
-    //console.log(isNumeric);
+  
     rows.sort((a, b) => {
       let aTd = a.children[columnIndex];
       let bTd = b.children[columnIndex];
@@ -200,15 +204,19 @@ class Table {
     wrapperEl.style.height = wrapperHeight;
 
     const tHeadEl = this.tableEl.querySelector('thead');
-    
+    tHeadEl.style.zIndex = 100;
     wrapperEl.addEventListener('scroll', () => {
       console.log('scroll');
       console.log(wrapperEl.scrollTop);
+      /*
       if(wrapperEl.scrollTop>0) {
         tHeadEl.classList.add('fixedhead');
       } else {
         tHeadEl.classList.remove('fixedhead');
       }
+      */
+     const scrollTop = wrapperEl.scrollTop
+     tHeadEl.style.transform = 'translateY(' + scrollTop + 'px)';
     })
     
     
@@ -219,6 +227,84 @@ class Table {
     return 0 - ascendingSort.apply(this, args);
   }
   */
+
+ addStatistic() {
+   const tFoot = document.createElement('tfoot');
+   const statisticToolArr = [
+      {
+        name:'sum',
+        func:sumOfAll
+      },
+      {
+        name:'mean',
+        func:meanOfAll
+      },
+      {
+        name:'median',
+        func:medianOfAll
+      }
+   ];
+
+   const rows = Array.from(this.tableEl.querySelectorAll('tbody tr'));
+
+   //得到统计信息数据 resultByColumn
+   const resultByColumn = [];//每一项为一个Object，形如:
+   /**
+      {
+        columnIndex:1,
+        statisticInfo:{}
+      }
+    */
+   this.thsOfHeader.forEach((th, columnIndex) => {//对于每一列，都从rows中找到对应数据
+     if (th.getAttribute('data-ftc-table--datatype') !== 'numeric') { //只处理类型为numeric的列
+       return;
+     }
+     const columnDataArr = []; 
+     rows.forEach((tr, index) =>{
+       const td = tr.children[columnIndex];
+       const tdContent = td.textContent.replace(/^\s+|\s+$/g,"");
+       columnDataArr.push(tdContent);
+     });
+     
+     const statisticInfo = {};
+     statisticToolArr.forEach((item)=> {
+      statisticInfo[item.name] = item.func(columnDataArr);
+     });
+     resultByColumn.push({
+       columnIndex,
+       statisticInfo
+     });
+   });
+   //console.log(resultByColumn);
+
+   //添加数据到tfoot
+   statisticToolArr.forEach(item => {
+     const trOfFoot = document.createElement('tr');
+     let tds = '';
+     
+     for (let i=0,len=this.thsOfHeader.length;i<len;i++) {
+      let td;
+      if (i == 0) {
+        td = `<th>${item.name}</th>` ;
+      } else {
+        td = '<td>--</td>';//默认统计值为这个
+        resultByColumn.forEach(result => {
+          if (result.columnIndex == i) {
+            console.log('result:',result);
+            td = `<td class="ftc-table__cell--numeric">${result.statisticInfo[item.name]}</td>`;
+          }
+        });
+      }
+       tds += td
+     }
+
+     trOfFoot.innerHTML = tds;
+     tFoot.appendChild(trOfFoot);
+   })
+
+   this.tableEl.appendChild(tFoot);
+   
+ }
 
   static init (rootEl) {
     if (!rootEl) {

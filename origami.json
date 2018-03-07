@@ -59,6 +59,24 @@
       "description": "",
       "js":"main.js",
       "css":"main.css"
+    },
+    {
+      "name": "wrappedTable",
+      "title": "wrappedTable",
+      "data": "demos/data/wrappedTable.json",
+      "template": "wrappedTable.html",
+      "description": "",
+      "js":"main.js",
+      "css":"main.css"
+    },
+    {
+      "name": "statisticTable",
+      "title": "statisticTable",
+      "data": "demos/data/wrappedTable.json",
+      "template": "statisticTable.html",
+      "description": "",
+      "js":"main.js",
+      "css":"main.css"
     }
   ]
 }
