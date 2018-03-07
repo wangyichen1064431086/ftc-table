@@ -1,0 +1,105 @@
+{
+  "captions":[
+    {
+      "content":"Top caption (default)",
+      "class":"ftc-table__caption--top"
+    },
+    {
+      "content":"Bottom caption",
+      "class":"ftc-table__caption--bottom"
+    }
+  ],
+  "thead":[
+    {
+      "content": "Cheese",
+      "contentSub":"Type of cheese",
+      "ariaSort":"none",
+      "datatType":""
+    },
+    {
+      "content": "Bread",
+      "contentSub":"Type of bread",
+      "ariaSort":"none",
+      "datatType":""
+    },
+    {
+      "content": "Cost",
+      "contentSub":"(GBP)",
+      "ariaSort":"none",
+      "datatType":"numeric"
+    },
+    {
+      "content": "Cost",
+      "contentSub":"(EUR)",
+      "ariaSort":"none",
+      "datatType":"numeric"
+    }
+  ],
+  "tbody":[
+    [
+      {
+        "content": "cheddar"
+      },
+      {
+        "content": "rye"
+      },
+      {
+        "content": 1,
+        "class":"ftc-table__cell--numeric"
+      },
+      {
+        "content": 1.56,
+        "class":"ftc-table__cell--numeric"
+      }
+    ],
+    [
+      {
+        "content": "stilton"
+      },
+      {
+        "content": "wholemeal"
+      },
+      {
+        "content": 2,
+        "class":"ftc-table__cell--numeric"
+      },
+      {
+        "content": 1.85,
+        "class":"ftc-table__cell--numeric"
+      }
+    ],
+    [
+      {
+        "content": "red leicester"
+      },
+      {
+        "content": "white"
+      },
+      {
+        "content": 3,
+        "class":"ftc-table__cell--numeric"
+      },
+      {
+        "content": "",
+        "class":"ftc-table__cell--numeric"
+      }
+    ],
+    [
+      {
+        "content": "gruyere"
+      },
+      {
+        "content": "sourdough"
+      },
+      {
+        "content": 7,
+        "class":"ftc-table__cell--numeric"
+      },
+      {
+        "content": "",
+        "class":"ftc-table__cell--numeric"
+      }
+    ]
+  ]
+  
+}

@@ -2,82 +2,35 @@
 
 {% block table %}
 <table class="ftc-table" data-ftc-component="ftc-table">
-  <caption class="ftc-table__caption--top">
-    Top caption (default)
-  </caption>
+  {% if table.captions %}
+    {% for caption in table.captions%}
+    <caption class={{caption.class}}>
+      caption.content
+    </caption>
+    {% endfor %}
+  {% endif %}
   <thead>
-    <tr>
-      <th>{{table.th1}}</th>
-      <th>Bread</th>
-      <th data-ftc-table-data-type="numeric" class="ftc-table__cell-numeric">
-        Cost1
-      </th>
-      <th data-ftc-table-data-type="numeric" class="ftc-table__cell-numeric">
-        Cost2
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        cheddar
-      </td>
-      <td>
-        rye
-      </td>
-      <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-        1
-      </td>
-      <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-        1.56
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        stilton
-      </td>
-      <td>
-        wholemeal
-      </td>
-      <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-        2
-      </td>
-      <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-        1.85
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        red leicester
-      </td>
-      <td>
-        white
-      </td>
-      <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-        3
-      </td>
-      <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        gruyere
-      </td>
-      <td>
-        sourdough
-      </td>
-      <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-        7
-      </td>
-      <td data-ftc-table-data-type="numeric" class="ftc-table__cell--numeric">
-      </td>
-    </tr>
-  </tbody>
-  <caption class="ftc-table__caption--bottom">
-    Bottom caption
-  </caption>
+      <tr>
+        {% for item in table.thead %}
+         <th aria-sort={{item.ariaSort}} data-ftc-table--datatype={{item.datatType}}>
+            {{item.content}}
+            <span class="ftc-table__cell--content-secondary">
+              {{item.contentSub}}
+            </span>
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for tr in table.tbody %}
+      <tr>
+        {% for td in tr%}
+        <td class={{td.class}}>
+          {{td.content}}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

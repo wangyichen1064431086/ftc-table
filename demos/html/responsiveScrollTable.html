@@ -2,66 +2,29 @@
 
 {% block table %}
 <table class="ftc-table ftc-table--responsive-scroll" data-ftc-component="ftc-table">
-  <thead>
-		<tr>
-			<th>{{table.th1}}</th>
-			<th>Bread</th>
-			<th data-o-table-data-type="numeric" class="o-table__cell--numeric">Cost (GBP)</th>
-			<th data-o-table-data-type="numeric" class="o-table__cell--numeric">Cost (EUR)</th>
-			<th>Taste Note</th>
-		</tr>
-  </thead>
-  <tbody>
-		<tr>
-			<td>cheddar</td>
-			<td>rye</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">1</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">1.56</td>
-			<td>sharp</td>
-		</tr>
-		<tr>
-			<td>stilton</td>
-			<td>wholemeal</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">2</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">1.85</td>
-			<td>strong</td>
-		</tr>
-		<tr>
-			<td>red leicester</td>
-			<td>white</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">3</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">2.72</td>
-			<td>sweet</td>
-		</tr>
-		<tr>
-			<td>cheddar</td>
-			<td>rye</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">1</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">1.56</td>
-			<td>sharp</td>
-		</tr>
-		<tr>
-			<td>stilton</td>
-			<td>wholemeal</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">2</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">1.85</td>
-			<td>strong</td>
-		</tr>
-		<tr>
-			<td>red leicester</td>
-			<td>white</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">3</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">2.72</td>
-			<td>sweet</td>
-		</tr>
-		<tr>
-			<td>gruyère</td>
-			<td>sourdough</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">7</td>
-			<td data-o-table-data-type="numeric" class="o-table__cell--numeric">7.89</td>
-			<td>blue</td>
-		</tr>
-	</tbody>
+		<thead>
+				<tr>
+					{% for item in table.thead %}
+					 <th aria-sort={{item.ariaSort}} data-ftc-table--datatype={{item.datatType}}>
+							{{item.content}}
+							<span class="ftc-table__cell--content-secondary">
+								{{item.contentSub}}
+							</span>
+						</th>
+					{% endfor %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for tr in table.tbody %}
+				<tr>
+					{% for td in tr%}
+					<td class={{td.class}}>
+						{{td.content}}
+					</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</tbody>
 
 </table>
 {% endblock %}

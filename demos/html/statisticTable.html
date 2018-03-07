@@ -4,87 +4,26 @@
 <table class="ftc-table ftc-table--row-stripes" data-ftc-component="ftc-table" data-ftc-table--no-js data-ftc-table--statistic>
   <thead>
     <tr>
-      <th aria-sort='none'>
-        {{table.th1}}
-        <span class="ftc-table__cell--content-secondary">
-          Type of cheese
-        </span>
-      </th>
-      <th aria-sort='none'>
-        Bread
-        <span class="ftc-table__cell--content-secondary" >
-          Type of bread
-        </span>
-      </th>
-      <th data-ftc-table--datatype="numeric" class="ftc-table__cell--numeric" aria-sort='none'>
-        Cost
-        <span class="ftc-table__cell--content-secondary">
-          (GBP)
-        </span>
-      </th>
-      <th data-ftc-table--datatype="numeric" class="ftc-table__cell--numeric" aria-sort='none'>
-        Cost
-        <span class="ftc-table__cell--content-secondary">
-          (EUR)
-        </span>
-      </th>
+      {% for item in table.thead %}
+        <th aria-sort={{item.ariaSort}} data-ftc-table--datatype={{item.datatType}}>
+          {{item.content}}
+          <span class="ftc-table__cell--content-secondary">
+            {{item.contentSub}}
+          </span>
+        </th>
+      {% endfor %}
     </tr>
   </thead>
   <tbody>
+    {% for tr in table.tbody %}
     <tr>
-      <td>
-        cheddar
+      {% for td in tr%}
+      <td class={{td.class}}>
+        {{td.content}}
       </td>
-      <td>
-        rye
-      </td>
-      <td data-ftc-table--datatype="numeric" class="ftc-table__cell--numeric">
-        1
-      </td>
-      <td data-ftc-table--datatype="numeric" class="ftc-table__cell--numeric">
-        1.56
-      </td>
+      {% endfor %}
     </tr>
-    <tr>
-      <td>
-        stilton
-      </td>
-      <td>
-        wholemeal
-      </td>
-      <td data-ftc-table--datatype="numeric" class="ftc-table__cell--numeric">
-        2
-      </td>
-      <td data-ftc-table--datatype="numeric" class="ftc-table__cell--numeric">
-        1.85
-      </td>
-    </tr>
-    <tr>
-      <td>
-        red leicester
-      </td>
-      <td>
-        white
-      </td>
-      <td class="ftc-table__cell--numeric">
-        3
-      </td>
-      <td class="ftc-table__cell--numeric">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        gruyere
-      </td>
-      <td>
-        sourdough
-      </td>
-      <td class="ftc-table__cell--numeric">
-        7
-      </td>
-      <td class="ftc-table__cell--numeric">
-      </td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
 {% endblock %}

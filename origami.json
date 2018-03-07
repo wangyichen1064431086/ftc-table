@@ -18,7 +18,7 @@
     {
       "name": "basicTable",
       "title": "basicTable",
-      "data": "demos/data/basicTable.json",
+      "data": "demos/data/tableData.json",
       "template": "basicTable.html",
       "description": "",
       "js":"main.js",
@@ -27,7 +27,7 @@
     {
       "name": "captionsTable",
       "title": "captionsTable",
-      "data": "demos/data/captionsTable.json",
+      "data": "demos/data/tableData.json",
       "template": "captionsTable.html",
       "description": "",
       "js":"main.js",
@@ -36,7 +36,7 @@
     {
       "name": "responsiveFlatTable",
       "title": "responsiveFlatTable",
-      "data": "demos/data/responsiveFlatTable.json",
+      "data": "demos/data/tableData.json",
       "template": "responsiveFlatTable.html",
       "description": "",
       "js":"main.js",
@@ -45,7 +45,7 @@
     {
       "name": "responsiveOverflowTable",
       "title": "responsiveOverflowTable",
-      "data": "demos/data/responsiveOverflowTable.json",
+      "data": "demos/data/tableData.json",
       "template": "responsiveOverflowTable.html",
       "description": "",
       "js":"main.js",
@@ -54,7 +54,7 @@
     {
       "name": "responsiveScrollTable",
       "title": "responsiveScrollTable",
-      "data": "demos/data/responsiveScrollTable.json",
+      "data": "demos/data/tableData.json",
       "template": "responsiveScrollTable.html",
       "description": "",
       "js":"main.js",
@@ -63,7 +63,7 @@
     {
       "name": "wrappedTable",
       "title": "wrappedTable",
-      "data": "demos/data/wrappedTable.json",
+      "data": "demos/data/tableData.json",
       "template": "wrappedTable.html",
       "description": "",
       "js":"main.js",
@@ -72,7 +72,7 @@
     {
       "name": "statisticTable",
       "title": "statisticTable",
-      "data": "demos/data/wrappedTable.json",
+      "data": "demos/data/tableData.json",
       "template": "statisticTable.html",
       "description": "",
       "js":"main.js",
