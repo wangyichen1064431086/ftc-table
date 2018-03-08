@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Wed Mar 07 2018 18:18:45 GMT+0800 (中国标准时间)
-
+const webpackConfig = require('./webpack.conf.test.js');
 module.exports = function(config) {
   config.set({
 
@@ -10,13 +10,13 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'requirejs'],
+    frameworks: ['mocha'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'test/*.test.js', included: false},
-      {pattern: 'src/js/**/*.js', included: false}
+       './test/table.test.js',
+      //{pattern: 'src/js/**/*.js', included: false}
     ],
 
 
@@ -27,9 +27,9 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
+    preprocessors:{
+      ['./test/table.test.js']:['webpack']
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -65,6 +65,14 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+    webpackMiddleware: {
+      noInfo: true
+    },
+    webpackServer: {
+      noInfo: true
+    },
+   
+    webpack:webpackConfig
   })
 }
