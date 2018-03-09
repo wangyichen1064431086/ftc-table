@@ -1,7 +1,6 @@
 const expect = require('expect.js');
-import Table from '../src/js/ftcTable.js';
+import Table from 'js/ftcTable.js';//因为webpack.conf.test.js的resolve.module字段有配置路径
 
-console.log('execute');
 describe('Table API', () => {
   it('is defined', () => {
     expect(Table).to.be.a('function');
@@ -18,7 +17,7 @@ describe('Instance for Table', () => {
     document.body.appendChild(containerEl);
     tableEl = containerEl.querySelector('[data-ftc-component="ftc-table"]');
   });
-
+ 
   afterEach(() => {
     tableEl = null;
     containerEl = null;

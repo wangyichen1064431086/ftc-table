@@ -1,6 +1,6 @@
 function cleanNumArr(sourceArr) {
   return sourceArr.filter(num => {
-    return (typeof num === 'number' || (typeof num === 'string' && num !== ''));//返回的只能是number或不为空的字符串
+    return (typeof num === 'number' || (typeof num === 'string' && num.replace(/(^\s*)|(\s*$)/g,'').length !== 0));//返回的只能是number或不为空的字符串
   }).map(num => {
     if (typeof num === 'number') {
       return num;//这里也有可能是NaN
@@ -62,6 +62,7 @@ function medianOfAll(numArray) {
 }
 
 export  {
+  cleanNumArr,
   sumOfAll,
   meanOfAll,
   medianOfAll

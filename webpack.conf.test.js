@@ -42,7 +42,7 @@ module.exports = {
   resolve: {
     modules:[
       'node_modules',
-      path.resolve(__dirname,'src')
+      path.resolve(__dirname,'src')//配置了test/test.js中import的文件路径
     ]
   }
 
