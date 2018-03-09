@@ -2,14 +2,13 @@
 The table component used by FTC.
 
 ## Install 
-### If your project is built with 
-Install the package for getting js API and sass API：
+If your project is not built on webpeck, you may import the sass by bower.
 ```
 cd yourProject
 npm install "@ftchinese/ftc-table" --save;//For getting js API
 bower install ftc-table --save;//For getting sass API
 ```
-
+If your project is built on webp
 ## API
 
 ### API for JS
@@ -156,24 +155,54 @@ We provide all kinds of tables at these demos: captionsTable, responsiveFlatTabl
 You can add different attributes to  <code>table</code> to get table with different features:
 
 #### Sort related:
-- <code>data-ftc-table--datatype</code>:
+- <code>data-ftc-table--datatype</code>: For <code>th</code> in <code>thead</code>, value can be **"numeric"**. If one table column has the attribuite <code>data-ftc-table--datatype="numeric"</code>, the data of this column will be considered as number type when sorting the table content depending on this column.
 
-- <code>aria-sort</code>:
+- <code>aria-sort</code>: For <code>th</code> in <code>thead</code>, value should be **"none","descending","ascending"**. It decides the sort order of this column when first clicking the sorting flag.
 
-- <code>data-ftc-table--disablesort</code>: for <code>th</code> in <code>thead</code>, no value. As every column of our table are default to be sortable, if you add this attribute to one column 's <code>th</code>, this column cannot be sorted.
+- <code>data-ftc-table--disablesort</code>: For <code>th</code> in <code>thead</code>, no value. As every column of our table are default to be sortable, if you add this attribute to one column 's <code>th</code>, this column cannot be sorted.
 
 
 #### Responsive related:
-- <code>data-ftc-table--responsive</code>:for <code>table</code>, value should be **flat**. To make the table flat responsive.
+- <code>data-ftc-table--responsive</code>:For <code>table</code>, value should be **flat**. To make the table flat responsive.
 
 #### Wrapped related
-- <code>data-ftc-table--wrapped</code>:for <code>table</table>,no value. To make the table wrapped by another container, and to fix the table head when scrolling the table. In this case, you can also add attributes <code>data-ftc-table--wrapper-width</code> and <code>data-ftc-table--wrapper-height</code> to specify the size of the container, whose value can be **100%**/**200px** ...
+- <code>data-ftc-table--wrapped</code>:For <code>table</table>,no value. To make the table wrapped by another container, and to fix the table head when scrolling the table. In this case, you can also add attributes <code>data-ftc-table--wrapper-width</code> and <code>data-ftc-table--wrapper-height</code> to specify the size of the container, whose value can be **100%**/**200px** ...
 
 #### Statistic related:
-- <code>data-ftc-table--statistic</code>:for <code>table</table>,no value. To add statistic info rows to the table, such as **sum**,**mean**,**median**. 
+- <code>data-ftc-table--statistic</code>:For <code>table</code>,no value. To add statistic info rows to the table, such as **sum**,**mean**,**median**. 
 
 ### The Classes
+#### Table basic classes:
+- <code>ftc-table</code>:**Required**.For <code> table </code>. The basic styles to table.
 
+#### Table responsive classes
+
+- <code>ftc-table--responsive-flat</code>:For <code>table</code>. Add flat responsive related styles to table.
+
+- <code>ftc-table--responsive-overflow</code>:For <code>table</code>. Add overflow responsive related styles to table.
+
+- <code>ftc-table--responsive-scroll</code>:For <code>table</code>. Add scroll responsive related styles to table.
+
+#### Table row stripe class:
+- <code>ftc-table--row-stripes</code>:For <code>table</code>. Add row stripe related styles to table, making the adjacent 2 rows with 2 colors.
+
+#### Table lines classes:
+- <code>ftc-table--horizontal-lines</code>:For <code>table</code>. Add horizontal lines to table.
+
+- <code>ftc-table--vertical-lines</code>:For <code>table</code>. Add vertical lines to table.
+
+#### Wrapping node class:
+- <code>ftc-table__wrapper</code>: For the **parentNode** of the<code>table</code>.The class for the container div wrapping the table.
+
+#### Cell classes:
+- <code>ftc-table__cell--numeric</code>: For <code>td</code> in <code> tbody</code>.The styles for numeric data cell.
+
+- <code>ftc-table__cell--content-secondary</code>: For <code>span</code> in <code> th</code> in <code> thead </code>. The styles for subtitle for each column.
+
+#### Captain classes:
+- <code>ftc-table__caption--top</code>: For <code>captain</code> in <code> table</code>.The style for top captain.
+
+- <code>ftc-table__caption--bottom</code>: For <code>captain</code> in <code> table</code>.The style for bottom captain.
 
 ## Build
 Write gulp task for transforming and bundling es6:

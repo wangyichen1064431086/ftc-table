@@ -93,7 +93,7 @@ class Table {
 
     let tableOrder;
     let ariaSort;
-    if (!this.tableEl.getAttribute('data-ftc-table--order') || currentSort === 'none' || currentSort === 'descending') { //如果当前table的属性data-ftc-table--order无值，且当前列的aria-sort为none或descending,那么就变为升序排列
+    if (!this.tableEl.getAttribute('data-ftc-table--order') || currentSort === 'none' || currentSort === 'descending' || !currentSort) { //如果当前table的属性data-ftc-table--order无值，且当前列的aria-sort为none或descending或无值,那么就变为升序排列
       tableOrder = 'ASC';
       ariaSort = 'ascending';
     } else {
