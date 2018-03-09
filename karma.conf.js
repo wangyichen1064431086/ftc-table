@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Wed Mar 07 2018 18:18:45 GMT+0800 (中国标准时间)
+//测试相关包:karma,karma-mocha,karma-webpack,webpack,babel-core,babel-loader,babel-preset-es2015,expect.js
 const webpackConfig = require('./webpack.conf.test.js');
 module.exports = function(config) {
   config.set({
