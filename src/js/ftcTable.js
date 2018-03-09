@@ -1,5 +1,5 @@
 import { sumOfAll, meanOfAll, medianOfAll} from './statisticFunc.js';
-
+console.log('here is ftcTable.js');
 class Table {
   constructor(tableEl) {
     if (!tableEl) {
