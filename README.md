@@ -37,7 +37,7 @@ If you choose the **silent mode**, you should set the **$ftc-table-is-silent** t
 ```
 $ftc-table-is-silent:false;
 
-@import "@ftchinese/ftc-table/main";
+@import "ftc-table/main";
 ```
 
 If you do not choose the silent mode, you should first set the **$ftc-table-is-silent** to true and import the ftc-table module, and what's more, you should manually **@include** the style **mixin** defined by ftc-table:
