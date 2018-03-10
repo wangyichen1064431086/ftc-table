@@ -1,7 +1,7 @@
 # ftc-table
 The table component used by FTC.
 
-## Install & Usage
+## Install
 ### By npm
 ```
 cd yourProject
