@@ -1,14 +1,19 @@
 # ftc-table
 The table component used by FTC.
 
-## Install 
-If your project is not built on webpeck, you may import the sass by bower.
+## Install & Usage
+### By npm
 ```
 cd yourProject
-npm install "@ftchinese/ftc-table" --save;//For getting js API
-bower install ftc-table --save;//For getting sass API
+npm install "@ftchinese/ftc-table" --save;
 ```
-If your project is built on webp
+
+### By bower
+```
+cd yourProject
+bower install ftc-table --save
+```
+
 ## API
 
 ### API for JS
@@ -35,7 +40,7 @@ If you choose the **silent mode**, you should set the **$ftc-table-is-silent** t
 ```
 $ftc-table-is-silent:false;
 
-@import "ftc-table/main";
+@import "@ftchinese/ftc-table/main";
 ```
 
 If you do not choose the silent mode, you should first set the **$ftc-table-is-silent** to true and import the ftc-table module, and what's more, you should manually **@include** the style **mixin** defined by ftc-table:
@@ -204,8 +209,15 @@ You can add different attributes to  <code>table</code> to get table with differ
 
 - <code>ftc-table__caption--bottom</code>: For <code>captain</code> in <code> table</code>.The style for bottom captain.
 
-## Build
-Write gulp task for transforming and bundling es6:
+<!--
+## Install & Usage
+### By npm
+```
+cd yourProject
+npm install "@ftchinese/ftc-table" --save;
+```
+
+Then, write gulp task for transforming and bundling es6:
 ```
 const gulp = require('gulp');
 const rollup = require('rollup').rollup;
@@ -234,3 +246,18 @@ const nodeResolve = require('rollup-plugin-node-resolve');
   }
 });
 ```
+And write gulp task for u
+If your project is not built on webpeck, you may import the sass by bower.
+```
+cd yourProject
+npm install "@ftchinese/ftc-table" --save;//For getting js API
+bower install ftc-table --save;//For getting sass API
+```
+If your project is built on webp
+
+### By bower
+
+### By webpack
+
+## Build
+-->

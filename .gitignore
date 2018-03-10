@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 .tmp
+
+ftc-table-1.2.1.tgz
