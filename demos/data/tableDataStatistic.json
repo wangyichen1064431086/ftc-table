@@ -26,13 +26,16 @@
       "content": "Cost",
       "contentSub":"(GBP)",
       "ariaSort":"none",
-      "dataType":"numeric"
+      "dataType":"numeric",
+      "toStatistic":true
+
     },
     {
       "content": "Cost",
       "contentSub":"(EUR)",
       "ariaSort":"none",
       "dataType":"numeric"
+     
     }
   ],
   "tbody":[

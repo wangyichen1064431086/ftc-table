@@ -256,7 +256,9 @@ class Table {
       }
     */
    this.thsOfHeader.forEach((th, columnIndex) => {//对于每一列，都从rows中找到对应数据
-     if (th.getAttribute('data-ftc-table--datatype') !== 'numeric') { //只处理类型为numeric的列
+    
+     //if (th.getAttribute('data-ftc-table--datatype') !== 'numeric') { //只处理类型为numeric的列
+     if (!th.hasAttribute('data-ftc-table--tostatistic') ) { //只处理具有tostatistic属性的列
        return;
      }
      const columnDataArr = []; 
@@ -287,7 +289,7 @@ class Table {
       if (i == 0) {
         td = `<th>${item.name}</th>` ;
       } else {
-        td = '<td>--</td>';//默认统计值为这个
+        td = '<td class="ftc-table__cell--numeric">--</td>';//默认统计值为这个 
         resultByColumn.forEach(result => {
           if (result.columnIndex == i) {
             console.log('result:',result);

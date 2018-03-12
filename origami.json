@@ -72,7 +72,7 @@
     {
       "name": "statisticTable",
       "title": "statisticTable",
-      "data": "demos/data/tableData.json",
+      "data": "demos/data/tableDataStatistic.json",
       "template": "statisticTable.html",
       "description": "",
       "js":"main.js",
