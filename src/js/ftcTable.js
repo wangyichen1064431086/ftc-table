@@ -174,9 +174,11 @@ class Table {
   }
   
   wrap() {
+    /*
     console.log('wrap');
     console.log(!this.tableEl.hasAttribute('data-ftc-table--wrapped'));
     console.log(!this.tableEl.parentNode.matches('.ftc-table__wrapper'));
+    */
     if (!this.tableEl.hasAttribute('data-ftc-table--wrapped') || this.tableEl.parentNode.matches('.ftc-table__wrapper')) {
       console.log('return wrap');
       //NOTE:
@@ -215,7 +217,7 @@ class Table {
         tHeadEl.classList.remove('fixedhead');
       }
       */
-     const scrollTop = wrapperEl.scrollTop
+     const scrollTop = wrapperEl.scrollTop;
      tHeadEl.style.transform = 'translateY(' + scrollTop + 'px)';
     })
     
