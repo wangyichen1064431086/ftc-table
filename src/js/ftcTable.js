@@ -208,7 +208,6 @@ class Table {
     const tHeadEl = this.tableEl.querySelector('thead');
     tHeadEl.style.zIndex = 100;
     wrapperEl.addEventListener('scroll', () => {
-      console.log('scroll');
       console.log(wrapperEl.scrollTop);
       /*
       if(wrapperEl.scrollTop>0) {
