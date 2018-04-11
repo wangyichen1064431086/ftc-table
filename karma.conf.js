@@ -67,7 +67,7 @@ module.exports = function(config) {
     },
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: false,//如果为false,那么测试将会一直挂起
 
     // Concurrency level
     // how many browser should be started simultaneous
@@ -84,6 +84,7 @@ module.exports = function(config) {
 
   if(process.env.TRAVIS) {
     configuration.browsers = ['Chrome_travis_ci'];
+    configuration.singleRun = false;
   }
   config.set(configuration);
 
