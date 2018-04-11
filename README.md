@@ -1,4 +1,6 @@
 # ftc-table
+[![](https://travis-ci.org/wangyichen1064431086/ftc-table.svg?branch=master)](https://travis-ci.org/wangyichen1064431086/ftc-table)
+
 The table component used by FTC.
 
 ## Install
