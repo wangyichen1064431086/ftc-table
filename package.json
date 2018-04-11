@@ -2,7 +2,8 @@
   "name": "@ftchinese/ftc-table",
   "version": "1.4.2",
   "description": "The The table component being used by FTC. Edit",
-  "main": "main.js",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
   "files": [
     "main.js",
     "main.scss",
@@ -13,7 +14,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=testing karma start karma.conf.js"
+    "test": "cross-env NODE_ENV=testing karma start karma.conf.js",
+    "clean": "rimraf build",
+    "build:rollup": "cross-env NODE_ENV=production rollup --config rollup.conf.prod.js",
+    "build": "npm run clean && npm run build:rollup"
   },
   "repository": {
     "type": "git",
@@ -61,7 +65,9 @@
     "requirejs": "^2.3.5",
     "rollup": "^0.56.2",
     "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-node-resolve": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-postcss": "^1.5.1",
     "rollup-plugin-uglify": "^3.0.0",
     "uglify-es": "^3.3.9",
     "webpack": "^4.0.0"
