@@ -3,7 +3,7 @@
 //测试相关包:karma,karma-mocha,karma-webpack,webpack,babel-core,babel-loader,babel-preset-es2015,expect.js
 const webpackConfig = require('./webpack.conf.test.js');
 module.exports = function(config) {
-  config.set({
+  let configuration = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -80,5 +80,11 @@ module.exports = function(config) {
     },
    
     webpack:webpackConfig
-  })
+  };
+
+  if(process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci'];
+  }
+  config.set(configuration);
+
 }
