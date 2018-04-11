@@ -11,7 +11,7 @@ module.exports = {
   },
   */ //1.此配置参数中没有entry、output两个节点的配置，打包的输入和输出karma会指定
 
-
+  mode :'development',
   module:{
     rules:[
       {
