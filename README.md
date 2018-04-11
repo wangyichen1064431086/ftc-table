@@ -36,7 +36,7 @@ If you choose the **silent mode**, you should set the **$ftc-table-is-silent** t
 ```
 $ftc-table-is-silent:false;
 
-@import "ftc-table/main";
+@import "../node_modules/@ftchinese/ftc-table/main";//The relative path of "@ftchinese/ftc-table" + "@ftchinese/ftc-table/main". What the relative path is depends on where you import it.
 ```
 
 If you do not choose the silent mode, you should first set the **$ftc-table-is-silent** to true and import the ftc-table module, and what's more, you should manually **@include** the style **mixin** defined by ftc-table:
