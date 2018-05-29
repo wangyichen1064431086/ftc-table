@@ -1,11 +1,13 @@
 {
   "name": "@ftchinese/ftc-table",
-  "version": "1.4.8",
+  "version": "1.4.7",
   "description": "The The table component being used by FTC. Edit",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
-    "build"
+    "build",
+    "main.scss",
+    "src/scss"
   ],
   "directories": {
     "test": "test"
