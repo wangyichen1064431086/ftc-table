@@ -5,10 +5,7 @@
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
-    "main.js",
-    "main.scss",
-    "src",
-    "bower.json"
+    "build"
   ],
   "directories": {
     "test": "test"
