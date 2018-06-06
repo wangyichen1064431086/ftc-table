@@ -179,7 +179,7 @@ You can add different attributes to  <code>table</code> to get table with differ
 
 - <code>data-ftc-table--wrapped</code>:For <code>table</table>,no value. To make the table wrapped by another container, and to fix the table head when scrolling the table. In this case, you can also add attributes <code>data-ftc-table--wrapper-width</code> and <code>data-ftc-table--wrapper-height</code> to specify the size of the container, whose value can be **100%**/**200px** ...
 
-#### Statistic related:
+#### Statistic related
 
 - <code>data-ftc-table--statistic</code>:For <code>table</code>,no value. To add statistic info rows to the table, such as **sum**,**mean**,**median**.
 
