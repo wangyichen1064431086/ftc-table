@@ -23,8 +23,9 @@ import Table from '@ftchinese/ftc-table';
 //Construct all the table elements with property data-ftc-component="ftc-table" in your document：
 Table.init();
 
-//Or if you want to construct one specified table:
-new Table(document.getElementById(yourTableId));
+//Or, if you want to construct one specified table:
+new Table(document.getElementById(yourTableId));//The praram of new Table() can be the element of your table.
+new Table('#yourTableId');//The param of new Table() can also be a string of query selector of your table, such as '#yourTableId','.yourTableClass'.
 
 ```
 
