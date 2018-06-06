@@ -51,10 +51,10 @@ $ftc-table-is-silent:true;
 
 // You can get all the default CSS classes.
 @include ftcTableAll; Get the CSS classes starting with ".ftc-table"
-
-// Or, you can define the CSS class prefix by your self
-@include ftcTableAll(my-table);//Get the css classes starting with ".my-table"
 ```
+
+<!-- // Or, you can define the CSS class prefix by your self
+@include ftcTableAll(my-table);//Get the css classes starting with ".my-table"-->
 
 Adding different CSS classes to your table will bring different style.The more details will be explained below.
 
