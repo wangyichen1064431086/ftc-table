@@ -42,9 +42,9 @@ class Table {
       th.addEventListener('click', this.sortByColumn.bind(this,columnIndex));//TODO:优化为事件委托
     
       th.addEventListener('keydown',(e) => {//按下空格或回车键也能实现排序变换. NOTE:必须设置了tabindex值为0，否则tabindex默认值为-1,即元素不能通过键盘导航来访问。
-        console.log('keydown');
+        //console.log('keydown');
         if ('key' in e) {
-          console.log('yes');
+          //console.log('yes');
           /** NOTE:
            * KeyboardEvent.key: 返回用户按下的键盘物理按键的按键名。如按下Enter返回'Enter'
            * KeyboardEvent.keyCode:返回用户按下的键盘物理按键的按键值。如按下Enter返回13。已废弃，用'key'取代。
@@ -180,7 +180,7 @@ class Table {
     console.log(!this.tableEl.parentNode.matches('.ftc-table__wrapper'));
     */
     if (!this.tableEl.hasAttribute('data-ftc-table--wrapped') || this.tableEl.parentNode.matches('.ftc-table__wrapper')) {
-      console.log('return wrap');
+      //console.log('return wrap');
       //NOTE:
         //Element.matches(selectorString)方法: 如果元素被指定的选择器字符串selectorString选择，返回true; 否则返回false。
       return;
@@ -208,7 +208,7 @@ class Table {
     const tHeadEl = this.tableEl.querySelector('thead');
     tHeadEl.style.zIndex = 100;
     wrapperEl.addEventListener('scroll', () => {
-      console.log(wrapperEl.scrollTop);
+      //console.log(wrapperEl.scrollTop);
       /*
       if(wrapperEl.scrollTop>0) {
         tHeadEl.classList.add('fixedhead');
@@ -293,7 +293,7 @@ class Table {
         td = '<td class="ftc-table__cell--numeric">--</td>';//默认统计值为这个 
         resultByColumn.forEach(result => {
           if (result.columnIndex == i) {
-            console.log('result:',result);
+            //console.log('result:',result);
             td = `<td class="ftc-table__cell--numeric">${result.statisticInfo[item.name]}</td>`;
           }
         });
